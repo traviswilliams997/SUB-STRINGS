@@ -1,18 +1,25 @@
 def substrings(string, array_of_strings)
-    result_array = Array.new()
+    result_hash = Hash.new()
+
     new_string = string.downcase
 
     array_of_strings.each do |word|
-    if new_string.include?(word)
-      result_array.push(word)
-    end 
+     substring_occurances =  new_string.scan(word)
+        unless substring_occurances.empty? 
+            substring_occurances.each do |subword|
+                if(!(result_hash[subword]))
+                    result_hash[subword] = 0
+                end
+                result_hash[subword] = result_hash[subword] + 1
+            end
+        end 
 
     end
-    p result_array
+    
+    p result_hash
 end
 
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
 
-substrings("Howdy partner, sit down! How's it going?", dictionary)
-#{ "below" => 1, "low" => 1 }
+substrings("below", dictionary)
