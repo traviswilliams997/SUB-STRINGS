@@ -7,6 +7,11 @@ end
 def check_if_string_exists_in_hash(result_hash,subword)
   !(result_hash[subword])
 end
+def add_substring_and_to_hash(result_hash, subword)
+    if check_if_string_exists_in_hash(result_hash, subword)
+        result_hash[subword] = 0
+    end
+end
 def substrings(string, array_of_strings)
     result_hash = Hash.new()
 
@@ -16,9 +21,7 @@ def substrings(string, array_of_strings)
      substring_occurances =  check_for_all_occurances_of_string(downcase_string, word)
         unless substring_occurances.empty? 
             substring_occurances.each do |subword|
-                if check_if_string_exists_in_hash(result_hash, subword)
-                    result_hash[subword] = 0
-                end
+                add_substring_and_to_hash(result_hash, subword)
                 result_hash[subword] = result_hash[subword] + 1
             end
         end 
