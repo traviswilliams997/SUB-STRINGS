@@ -1,17 +1,22 @@
 def make_string_downcase(string)
   string.downcase
 end
-
+def check_for_all_occurances_of_string(string, word)
+    string.scan(word)
+end
+def check_if_string_exists_in_hash(result_hash,subword)
+  !(result_hash[subword])
+end
 def substrings(string, array_of_strings)
     result_hash = Hash.new()
 
     downcase_string = make_string_downcase(string)
 
     array_of_strings.each do |word|
-     substring_occurances =  downcase_string.scan(word)
+     substring_occurances =  check_for_all_occurances_of_string(downcase_string, word)
         unless substring_occurances.empty? 
             substring_occurances.each do |subword|
-                if(!(result_hash[subword]))
+                if check_if_string_exists_in_hash(result_hash, subword)
                     result_hash[subword] = 0
                 end
                 result_hash[subword] = result_hash[subword] + 1
