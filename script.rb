@@ -1,7 +1,11 @@
+def make_string_downcase(string)
+  string.downcase
+end
+
 def substrings(string, array_of_strings)
     result_hash = Hash.new()
 
-    new_string = string.downcase
+    new_string = make_string_downcase(string)
 
     array_of_strings.each do |word|
      substring_occurances =  new_string.scan(word)
@@ -22,4 +26,4 @@ end
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
 
-substrings("below", dictionary)
+substrings("Howdy partner, sit down! How's it going?", dictionary)
