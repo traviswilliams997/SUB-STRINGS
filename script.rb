@@ -5,10 +5,10 @@ end
 def substrings(string, array_of_strings)
     result_hash = Hash.new()
 
-    new_string = make_string_downcase(string)
+    downcase_string = make_string_downcase(string)
 
     array_of_strings.each do |word|
-     substring_occurances =  new_string.scan(word)
+     substring_occurances =  downcase_string.scan(word)
         unless substring_occurances.empty? 
             substring_occurances.each do |subword|
                 if(!(result_hash[subword]))
