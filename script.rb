@@ -12,6 +12,9 @@ def add_substring_and_to_hash(result_hash, subword)
         result_hash[subword] = 0
     end
 end
+def increment_substring_value(result_hash, subword)
+  result_hash[subword] = result_hash[subword] + 1
+end
 def substrings(string, array_of_strings)
     result_hash = Hash.new()
 
@@ -22,7 +25,7 @@ def substrings(string, array_of_strings)
         unless substring_occurances.empty? 
             substring_occurances.each do |subword|
                 add_substring_and_to_hash(result_hash, subword)
-                result_hash[subword] = result_hash[subword] + 1
+                increment_substring_value(result_hash, subword)
             end
         end 
 
